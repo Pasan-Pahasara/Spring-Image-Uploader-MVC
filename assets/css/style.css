@@ -26,3 +26,27 @@
     font-family: Ubuntu, sans-serif!important;
     font-weight: normal;
 }
+
+.btn-modern {
+    width: 91px;
+    height: 38px;
+    letter-spacing: 0.5px;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+    transition: all 0.3s ease 0s;
+    outline: none !important;
+}
+
+#btnLoad {
+    border: solid 2px #2EE59D;
+    width: 113px;
+    color: #2EE59D;
+}
+
+#btnLoad:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px #59b797;
+    color: #fff;
+    transform: translateY(-3px);
+}
