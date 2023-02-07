@@ -63,3 +63,13 @@
     color: #fff;
     transform: translateY(-3px);
 }
+
+thead {
+    background: linear-gradient(to right, #805a4d, #332d2d);
+    font-weight: bolder!important;
+}
+
+#table tbody > tr:hover * {
+    font-weight: bold;
+    color: rgb(54, 49, 49);
+}
