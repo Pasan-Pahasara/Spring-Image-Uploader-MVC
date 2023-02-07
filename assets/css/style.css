@@ -50,3 +50,16 @@
     color: #fff;
     transform: translateY(-3px);
 }
+
+#btnUpload {
+    border: solid 2px #ff6b81;
+    width: 137px;
+    color: #ff6b81;
+}
+
+#btnUpload:hover {
+    background-color: #ff6b81;
+    box-shadow: 0px 15px 20px rgba(191, 64, 64, 0.4);
+    color: #fff;
+    transform: translateY(-3px);
+}
