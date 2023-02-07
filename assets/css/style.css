@@ -1,0 +1,28 @@
+/**
+ * @author : ShEnUx
+ * @time : 11:19 PM
+ * @date : 2/7/2023
+ * @since : 0.1.0
+ **/
+/*
+*Import Fonts
+ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+/**
+ * Customized Scrollbar.
+ */
+::-webkit-scrollbar {
+    width: 6px;
+    background: #3f3838;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b88962;
+}
+
+* {
+    font-family: Ubuntu, sans-serif!important;
+    font-weight: normal;
+}
