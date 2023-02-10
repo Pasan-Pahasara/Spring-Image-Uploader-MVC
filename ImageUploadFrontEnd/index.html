@@ -13,7 +13,8 @@
         <div class="container-fluid justify-content-center">
             <a class="navbar-brand" href="#" style="font-size: 18px; color: #A87E5A;">
                 <img alt="" src="assets/img/favicon.png" style="width: 38px;height: 38px;position: absolute;">
-                <span style="font-size: 20px; font-weight: bolder; color: #f0f0f0; margin-left: 46px; text-align: center">IᗰᗩGE ᑌᑭᒪOᗩᗪ</span> Spring Viewer</a>
+                <span style="font-size: 20px; font-weight: bolder; color: #f0f0f0; margin-left: 46px; text-align: center">IᗰᗩGE ᑌᑭᒪOᗩᗪ</span>
+                Spring Viewer</a>
         </div>
     </nav>
 </header>
@@ -23,31 +24,67 @@
             <form>
                 <label for="file">Browse Your image </label>
                 <input id="file" name="myFile" type="file" class="form-control shadow">
-                <button style="margin-bottom: 8px;margin-top: 8px;" id="btnUpload" class="btn-modern mt-3" type="button">Upload Image</button>
+                <button style="margin-bottom: 8px;margin-top: 8px;" id="btnUpload" class="btn-modern mt-3"
+                        type="button">Upload Image
+                </button>
             </form>
         </div>
         <div class="col-5">
-            <div id="display" class="border border-1, w-100 rounded-4" style="height: 300px"></div>
-            <button style="margin-bottom: 8px;margin-top: 8px;" id="btnLoad" class="btn-modern mt-3" type="button">Load Image</button>
-            <hr>
-            <div class="col-12 d-flex rounded-2 shadow overflow-auto">
-                <table class="table table-bordered table-hover">
-                    <thead class="text-white">
-                    <tr>
-                        <th>Images</th>
-                    </tr>
-                    </thead>
-                    <tbody id="table">
-
-                    </tbody>
-                </table>
-            </div>
+            <img id="display" class="border border-1, w-100 rounded-4" style="height: 400px">
+            <button style="margin-bottom: 8px;margin-top: 8px;" id="btnLoad" class="btn-modern mt-3" type="button">Load
+                Image
+            </button>
         </div>
     </div>
 </section>
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script>
+    let baseUrl = "http://localhost:8080/ImageUploadBackEnd_war/";
+
+    loadTheLastUploadedImage();
+    $("#btnUpload").on('click',function (){
+        var data = new FormData();
+        let file = $("#file")[0].files[0];
+        let fileName = $("#file")[0].files[0].name;
+        data.append("image", file, fileName);
+
+        $.ajax({
+            url: baseUrl + "api/v1/upload",
+            method: 'post',
+            async: true,
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (resp) {
+                $('#display').attr('src', `data:Image/png;base64,${resp}`);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
+    $("#btnLoad").on('click',function () {
+        loadTheLastUploadedImage();
+    });
+
+    function loadTheLastUploadedImage() {
+        $.ajax({
+            url: baseUrl + "api/v1/upload",
+            method: 'get',
+            dataType: 'json',
+            success: function (resp) {
+
+                $('#display').attr('src', `${resp}`);
+                console.log(resp)
+
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
 
 </script>
 </body>
