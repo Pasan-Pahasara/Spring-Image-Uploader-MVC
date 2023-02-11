@@ -1,8 +1,14 @@
 package lk.ijse.spring.config;
 
+import lk.ijse.spring.advisor.AppWideExceptionHandler;
+import lk.ijse.spring.controller.ImageUploadController;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @author : ShEnUx
@@ -12,6 +18,24 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  **/
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {})
-public class WebAppConfig {
+@ComponentScan(basePackageClasses = {ImageUploadController.class, AppWideExceptionHandler.class})
+public class WebAppConfig implements WebMvcConfigurer {
+    /*
+     * First and foremost we need to configure MultipartResolver
+     */
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(50000000);
+        return multipartResolver;
+    }
+
+    /*
+     * You have to override this method and allocate the url and location for uploaded resources
+     * */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/uploads/**").addResourceLocations("/uploads/");
+    }
 }
