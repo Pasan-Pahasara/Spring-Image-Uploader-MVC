@@ -37,7 +37,7 @@ https://github.com/Pasan-Pahasara/Spring-Image-Uploader-MVC.git
  
 ![GitHub forks](https://img.shields.io/github/forks/Pasan-Pahasara/Spring-Image-Uploader-MVC?&labelColor=black&color=0fb9b1&style=for-the-badge)
 ![GitHub stars](https://img.shields.io/github/stars/Pasan-Pahasara/Spring-Image-Uploader-MVC?&labelColor=black&color=f7b731&style=for-the-badge)
-![GitHub LastCommit](https://img.shields.io/github/last-commit/Spring-Image-Uploader-MVC?logo=github&labelColor=black&color=d1d8e0&style=for-the-badge)
+![GitHub LastCommit](https://img.shields.io/github/last-commit/Pasan-Pahasara/Spring-Image-Uploader-MVC?logo=github&labelColor=black&color=d1d8e0&style=for-the-badge)
 
 </div>
 
